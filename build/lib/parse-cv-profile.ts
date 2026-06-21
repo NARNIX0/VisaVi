@@ -18,34 +18,38 @@ function clampLevel(n: number) {
   return Math.max(0, Math.min(100, Math.round(n)));
 }
 
+function asOptionalString(v: unknown): string | undefined {
+  if (v == null) return undefined;
+  const s = typeof v === "string" ? v : String(v);
+  const t = s.trim();
+  return t || undefined;
+}
+
 export function normalizeParsedCvProfile(raw: ParsedCvProfile): Partial<UserProfile> {
-  return {
-    fullName: raw.fullName?.trim() || undefined,
-    location: raw.location?.trim() || undefined,
-    bio: raw.bio?.trim() || undefined,
-    university: raw.university?.trim() || undefined,
-    degree: raw.degree?.trim() || undefined,
-    graduationYear: raw.graduationYear?.trim() || undefined,
-    visaStatus: raw.visaStatus?.trim() || undefined,
-    visaExpiry: raw.visaExpiry?.trim() || undefined,
+  const result: Partial<UserProfile> = {
+    fullName: asOptionalString(raw.fullName),
+    location: asOptionalString(raw.location),
+    bio: asOptionalString(raw.bio),
+    university: asOptionalString(raw.university),
+    degree: asOptionalString(raw.degree),
+    graduationYear: asOptionalString(raw.graduationYear),
+    visaStatus: asOptionalString(raw.visaStatus),
+    visaExpiry: asOptionalString(raw.visaExpiry),
     skills: raw.skills
       ?.filter((s) => s.name?.trim())
       .map((s) => ({
-        name: s.name.trim(),
+        name: String(s.name).trim(),
         level: clampLevel(Number(s.level) || 75),
       })),
     experience: raw.experience
       ?.filter((e) => e.title?.trim())
       .map((e) => ({
-        title: e.title.trim(),
-        company: e.company?.trim() ?? "",
-        period: e.period?.trim() ?? "",
+        title: String(e.title).trim(),
+        company: asOptionalString(e.company) ?? "",
+        period: asOptionalString(e.period) ?? "",
       })),
-    tags: raw.tags
-      ?.map((t) => t.trim())
-      .filter(Boolean)
-      .slice(0, 20),
   };
+  return result;
 }
 
 export function parseCvProfileJson(text: string): Partial<UserProfile> {

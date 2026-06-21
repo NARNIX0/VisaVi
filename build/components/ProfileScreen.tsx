@@ -24,6 +24,7 @@ import { useCredits } from "@/hooks/useCredits";
 import { useAppStore } from "@/hooks/useAppStore";
 import { pdfFileToDataUrls } from "@/lib/pdf-to-images-client";
 import { parseCvProfile } from "@/lib/client-ai";
+import { extractTagsFromCv } from "@/lib/extract-tags-from-cv";
 import { normalizeProfileState, type ProfileState } from "@/data/profile";
 
 function StatCard({
@@ -64,8 +65,9 @@ function getInitials(name: string | undefined) {
   );
 }
 
-function empty(v: string | undefined | null) {
-  return v?.trim() ? v : "—";
+function empty(v: unknown) {
+  const s = typeof v === "string" ? v : v == null ? "" : String(v);
+  return s.trim() ? s : "—";
 }
 
 export function ProfileScreen() {
@@ -87,30 +89,30 @@ export function ProfileScreen() {
   const offers = applications.filter((a) => a.status === "Offer").length;
 
   function startEdit() {
-    setDraft(profile);
+    setDraft(normalizeProfileState(profile));
     setEditing(true);
   }
 
   function saveEdit() {
-    updateProfile(draft);
+    updateProfile(normalizeProfileState(draft));
     setEditing(false);
   }
 
   function cancelEdit() {
-    setDraft(profile);
+    setDraft(normalizeProfileState(profile));
     setEditing(false);
     setNewTag("");
   }
 
   function applyParsedFields(parsed: Partial<ProfileState>, text: string, fileName: string) {
-    const patch: Partial<ProfileState> = {
+    const patch = normalizeProfileState({
+      ...parsed,
       baseCv: text,
       cvFileName: fileName,
-      ...parsed,
-    };
+    });
     updateProfile(patch);
     if (editing) {
-      setDraft((d) => ({ ...d, ...patch }));
+      setDraft((d) => normalizeProfileState({ ...d, ...patch }));
     }
   }
 
@@ -148,6 +150,7 @@ export function ProfileScreen() {
 
       const text = data.text ?? "";
       const fileName = data.fileName ?? file.name;
+      const tags = extractTagsFromCv(text);
 
       let parsed: Partial<ProfileState> = {};
       try {
@@ -156,7 +159,7 @@ export function ProfileScreen() {
         // CV text saved even if profile parse fails
       }
 
-      applyParsedFields(parsed, text, fileName);
+      applyParsedFields({ ...parsed, tags }, text, fileName);
     } catch (err) {
       setCvUploadError(err instanceof Error ? err.message : "Upload failed");
     } finally {
@@ -196,7 +199,7 @@ export function ProfileScreen() {
     }));
   }
 
-  const p = editing ? draft : profile;
+  const p = normalizeProfileState(editing ? draft : profile);
   const displayName = (p.fullName ?? "").trim() || currentUser.name;
 
   return (
@@ -337,7 +340,7 @@ export function ProfileScreen() {
           />
         ) : (
           <pre className="mt-3 max-h-64 overflow-y-auto whitespace-pre-wrap rounded-lg bg-zinc-50 p-3 text-xs text-zinc-700">
-            {profile.baseCv.trim() || "No CV uploaded yet."}
+            {profile.baseCv?.trim() || "No CV uploaded yet."}
           </pre>
         )}
       </div>

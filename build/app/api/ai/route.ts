@@ -125,10 +125,9 @@ Schema:
   "visaStatus": "string or empty if not mentioned",
   "visaExpiry": "string or empty if not mentioned",
   "skills": [{"name":"string","level":0-100}],
-  "experience": [{"title":"string","company":"string","period":"string"}],
-  "tags": ["keyword1","keyword2"]
+  "experience": [{"title":"string","company":"string","period":"string"}]
 }
-Include 8-15 tags: skills, tools, domains, and role keywords from the CV.`,
+Do NOT include a tags field — tags are extracted separately from the CV text.`,
           },
           {
             role: "user",
