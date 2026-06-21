@@ -1,0 +1,11 @@
+# Next.js app (build/)
+build/node_modules/
+build/.next/
+build/out/
+build/.env*
+!build/.env.local.example
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db

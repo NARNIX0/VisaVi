@@ -1,0 +1,41 @@
+---
+description: 'Visavi Base - Domain model, technical foundation and shared requirements'
+import:
+  - typescript-react-app-template
+---
+
+***definitions***
+
+- :User: is a job seeker with profile, uploaded CV, and credit balance.
+- :Company: is a UK employer with a valid visa sponsorship licence.
+- :Job: is a sponsored job listing with title, company, location, salary, requirements and description.
+- :Application: tracks a user's job status across Saved, Applied, Assessment, Interview, Offer, Rejected.
+- :VisaSponsorCheck: validates that only companies with active UK sponsor licences are shown.
+- :AIVerdict: contains overall match percentage, interview chance, offer chance, skills alignment and recommendation.
+- :InterviewPrepSession: is a live AI mock interview with scoring and suggestions.
+
+***implementation reqs***
+
+- Use Next.js 15 (App Router), TypeScript, Tailwind CSS and shadcn/ui.
+- Persistent green sidebar (#00A86B) with user avatar, navigation and Pro upgrade card.
+- Use Zustand for global state (applications, credits, current job).
+- All job data must pass through :VisaSponsorCheck: before display.
+- Create the following folder structure: src/components/, src/pages/, src/types/, src/store/.
+- Credit system must be visible in the UI for AI features.
+
+***test reqs***
+
+- Unit tests for JobCard, StatusSummary and KanbanColumn components.
+- All AI features use deterministic mocks for demo reliability.
+
+***functional specs***
+
+- Platform only displays jobs from companies with active UK visa sponsorship licences
+    ***acceptance tests***
+    - Jobs from non-sponsored companies are filtered out at load time.
+    - A green "Sponsorship: Active" pill is shown on sponsored jobs.
+
+- User profile is displayed in the sidebar
+    ***acceptance tests***
+    - Shows avatar with initials "AA", name and email.
+    - Pro upgrade promo card is visible at the bottom of the sidebar.

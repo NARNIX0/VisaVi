@@ -1,0 +1,69 @@
+---
+description: 'Visavi - UK Visa Sponsorship Job Platform with AI-powered applications, swiping, review, Kanban tracking and interview prep'
+import:
+  - typescript-react-app-template
+---
+
+***definitions***
+
+- :User: is a job seeker (international student/graduate) with a profile, uploaded CV, and subscription/credit balance.
+- :Company: is a UK employer with a valid visa sponsorship licence (sourced from UK Gov CSV).
+- :Job: is a job listing from a :Company: that includes title, location, salary, requirements, and visa sponsorship status.
+- :Application: represents a user's interaction with a :Job: (Saved, Applied, Assessment, Interview, Offer, Rejected) with status tracking.
+- :AIVerdict: is the AI-generated match analysis for a :Job: including overall percentage, interview chance, offer chance, and skills alignment.
+- :InterviewPrepSession: is an AI mock interview for a specific :Application: with live feedback on communication, structure, confidence, and technical depth.
+- :VisaSponsorCheck: is the system that cross-references job listings against the official UK sponsor licence list.
+
+***implementation reqs***
+
+- Frontend: Next.js 15 (App Router), TypeScript, Tailwind CSS, shadcn/ui components, React DnD or similar for Kanban drag-and-drop.
+- State management: Zustand or TanStack Query for applications and jobs.
+- Data: Local JSON or Supabase for demo; includes mock UK sponsor licence data and job listings filtered to only sponsored companies.
+- AI features: Mocked or integrated via API calls for verdict generation, mock interview, application tailoring (Solvimon credits integration planned).
+- Layout: Persistent green sidebar navigation matching the provided mockups (Jobs, Review, Applications, Interview Prep, Profile, AI Settings).
+- Responsive: Desktop-first with clean card-based UI, pastel column colors for Kanban, green accent (#00A86B or similar).
+
+***test reqs***
+
+- Unit tests for core components (JobCard, KanbanBoard, AIVerdict, InterviewFeedback).
+- Conformance tests for key user flows (swiping/review, status change in Kanban, starting mock interview).
+- All AI features must have deterministic mock responses for demo reliability.
+
+***functional specs***
+
+- User sees only jobs from companies with active UK visa sponsorship licences
+    ***acceptance tests***
+    - Job listings are filtered at load time using the :VisaSponsorCheck: against the official sponsor list.
+    - Non-sponsored companies are never shown in Jobs or Review screens.
+
+- User can Review a job with full AI verdict
+    ***acceptance tests***
+    - Review screen displays job details, AI Verdict (overall match %, interview chance, offer chance), skills match bars, and "Why Visavi recommends" section.
+    - One-Click Apply, Reject, Save for later, and Outreach buttons are present and functional.
+    - Matches the exact layout and elements from the provided UI mockups (Deloitte example, 92% match, sponsorship pill, etc.).
+
+- Applications are tracked in a visual Kanban board with 6 columns
+    ***acceptance tests***
+    - Columns: Saved, Applied, Assessment, Interview, Offer, Rejected.
+    - Drag-and-drop between columns updates status.
+    - Summary cards at top show counts for each status (All, Applied, In Progress, Interview, Offer, Rejected).
+    - Each card shows company, role, location, and time since action.
+
+- User can prepare for interviews with AI mock interviews
+    ***acceptance tests***
+    - Interview Prep screen shows upcoming interviews, live mock interview interface with timer, chat bubbles, and real-time feedback scores (Communication, Confidence, Structure, Relevance, Technical Depth).
+    - Progress (questions answered / total) and AI suggestions are displayed live.
+    - Matches the layout from the provided Interview Prep mockup.
+
+- Sidebar navigation is persistent across all screens
+    ***acceptance tests***
+    - Green sidebar with user profile (AA avatar), navigation items (Jobs, Review, Applications, Interview Prep, Profile, AI Settings), and Pro upgrade promo card.
+    - Active route is highlighted.
+
+- Core monetisation hooks for Solvimon
+    ***acceptance tests***
+    - AI features (verdict generation, mock interview, one-click apply) are gated behind credits or subscription.
+    - Credit balance is visible in the UI.
+    - "Upgrade to Pro" flow is present in the sidebar promo.
+
+> This spec provides the foundation for Visavi. The detailed UI components, interactions, and advanced AI logic will be implemented and refined directly in Cursor after this initial Codeplain-driven specification.

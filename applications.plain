@@ -1,0 +1,36 @@
+---
+description: 'Visavi Applications - Kanban board for tracking job application statuses'
+import:
+  - typescript-react-app-template
+---
+
+***definitions***
+
+- :Application: tracks job status across Saved, Applied, Assessment, Interview, Offer, Rejected.
+
+***implementation reqs***
+
+- Use React DnD or @hello-pangea/dnd for drag-and-drop.
+- 6 columns with distinct pastel background colors.
+
+***functional specs***
+
+- Top summary row shows application counts
+    ***acceptance tests***
+    - Shows 6 cards: All Applications (24), Applied (10), In Progress (5), Interview (3), Offer (1), Rejected (5).
+
+- Applications are displayed in a 6-column Kanban board
+    ***acceptance tests***
+    - Columns in order: Saved (gray), Applied (blue), Assessment (yellow), Interview (purple), Offer (green), Rejected (red).
+    - Each column shows the correct number of job cards.
+    - Job cards display company, role, location and time since action.
+
+- Drag and drop functionality updates application status
+    ***acceptance tests***
+    - User can drag a job card from one column to another.
+    - Status updates immediately after drop.
+
+- User can manually add a new application
+    ***acceptance tests***
+    - "+ Add Application" button opens a form.
+    - New application is added to the Saved column.

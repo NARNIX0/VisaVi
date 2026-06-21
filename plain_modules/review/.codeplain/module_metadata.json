@@ -1,0 +1,10 @@
+{
+    "source_hash": "b7b1a506e035cc5c5fe7cdf6b5a2519ac8e5a1ad678b8c64d1d657e7507d6941",
+    "non_functional_source_hash": "9574756e8e5ed1094b1ae1a90f952c96aba55b82ff3ef2c5586da4f99464c57a",
+    "functionalities": [
+        "- User sees job header with company logo, title, location, salary and sponsorship status\n  ***acceptance tests***\n  - Shows company logo, job title, \"Sponsorship: Active\" green pill, location, employment type and salary.",
+        "- User sees AI VERDICT section with detailed match analysis\n  ***acceptance tests***\n  - Large green \"Strong Apply\" text with 92% overall match score.\n  - Shows Interview Chance (64%) and Offer Chance (14%) with green arrows.\n  - Circular progress indicator displays the overall match percentage.",
+        "- Skills Match section displays alignment with the job\n  ***acceptance tests***\n  - Shows horizontal progress bars for Financial Analysis (100%), Excel (90%), Data Analysis (80%), PowerPoint (70%).\n  - \"View all requirements\" link is present.",
+        "- Action buttons are available at the bottom of the review\n  ***acceptance tests***\n  - Red \"Reject\" button, \"Save for later\", \"Outreach\" and dark green \"One-Click Apply\" button are visible.\n  - One-Click Apply button has a sparkle icon and \"AI will generate your application\" text."
+    ]
+}

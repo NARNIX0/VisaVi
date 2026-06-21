@@ -1,0 +1,24 @@
+---
+description: 'Visavi UI System - Shared components, layout and design system'
+requires:
+  - base
+---
+
+***definitions***
+
+- :Sidebar: is the persistent green navigation panel.
+- :JobCard: is the standard job card.
+- :KanbanColumn: is a status column.
+- :AIVerdictPanel: displays match analysis.
+
+***implementation reqs***
+
+- Use shadcn/ui + Tailwind with green accent (#00A86B).
+- Consistent sidebar + main content layout from mockups.
+
+***functional specs***
+
+- Shared UI components are consistent across the app
+    ***acceptance tests***
+    - Sidebar is always visible and highlights current section.
+    - JobCard and KanbanColumn follow the provided mockup designs.

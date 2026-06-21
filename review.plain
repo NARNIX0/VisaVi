@@ -1,0 +1,37 @@
+---
+description: 'Visavi Review - AI-powered job review and verdict screen'
+import:
+  - typescript-react-app-template
+---
+
+***definitions***
+
+- :Job: is a sponsored job listing.
+- :AIVerdict: contains match percentage, interview chance, offer chance and skills alignment.
+
+***implementation reqs***
+
+- Use Next.js 15, Tailwind and shadcn/ui.
+- Match the exact layout from the provided UI mockups.
+
+***functional specs***
+
+- User sees job header with company logo, title, location, salary and sponsorship status
+    ***acceptance tests***
+    - Shows company logo, job title, "Sponsorship: Active" green pill, location, employment type and salary.
+
+- User sees AI VERDICT section with detailed match analysis
+    ***acceptance tests***
+    - Large green "Strong Apply" text with 92% overall match score.
+    - Shows Interview Chance (64%) and Offer Chance (14%) with green arrows.
+    - Circular progress indicator displays the overall match percentage.
+
+- Skills Match section displays alignment with the job
+    ***acceptance tests***
+    - Shows horizontal progress bars for Financial Analysis (100%), Excel (90%), Data Analysis (80%), PowerPoint (70%).
+    - "View all requirements" link is present.
+
+- Action buttons are available at the bottom of the review
+    ***acceptance tests***
+    - Red "Reject" button, "Save for later", "Outreach" and dark green "One-Click Apply" button are visible.
+    - One-Click Apply button has a sparkle icon and "AI will generate your application" text.

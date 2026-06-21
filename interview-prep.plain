@@ -1,0 +1,35 @@
+---
+description: 'Visavi Interview Prep - AI mock interviews with live feedback'
+import:
+  - typescript-react-app-template
+---
+
+***definitions***
+
+- :InterviewPrepSession: is a live AI mock interview with scoring.
+
+***implementation reqs***
+
+- Real-time chat interface with message bubbles.
+- Live feedback panel with scores and suggestions.
+
+***functional specs***
+
+- User sees list of upcoming interviews
+    ***acceptance tests***
+    - Shows Deloitte Graduate Analyst (Tomorrow, 92% match), Google Product Analyst (May 20, 88% match), JPMorgan Chase (May 23, 85% match).
+    - "View all applications" button is present.
+
+- User can start and participate in a live mock interview
+    ***acceptance tests***
+    - Screen shows live timer (e.g. 04:32), AI interviewer chat bubbles and user response bubbles.
+    - Red "End" button is available to stop the session.
+
+- Live feedback panel shows real-time scores
+    ***acceptance tests***
+    - Displays scores for Communication (8.5/10), Confidence (7.8/10), Structure (8.0/10), Relevance (9.0/10), Technical Depth (7.2/10).
+    - Circular progress shows questions answered (e.g. 3/8).
+
+- AI suggestions appear during the interview
+    ***acceptance tests***
+    - Shows suggestions such as "Good structure in your answer", "Try to quantify your impact", "Add more about teamwork".

@@ -1,0 +1,10 @@
+{
+    "source_hash": "0ac4279b1e840e1c5afd0cfd445e028886253b31c89c20e8ddc5ff96c7b96342",
+    "non_functional_source_hash": "348b7be6a84e7093d64306ac170c15ab84373389d05b579105b561b9227cc05b",
+    "functionalities": [
+        "- User sees list of upcoming interviews\n  ***acceptance tests***\n  - Shows Deloitte Graduate Analyst (Tomorrow, 92% match), Google Product Analyst (May 20, 88% match), JPMorgan Chase (May 23, 85% match).\n  - \"View all applications\" button is present.",
+        "- User can start and participate in a live mock interview\n  ***acceptance tests***\n  - Screen shows live timer (e.g. 04:32), AI interviewer chat bubbles and user response bubbles.\n  - Red \"End\" button is available to stop the session.",
+        "- Live feedback panel shows real-time scores\n  ***acceptance tests***\n  - Displays scores for Communication (8.5/10), Confidence (7.8/10), Structure (8.0/10), Relevance (9.0/10), Technical Depth (7.2/10).\n  - Circular progress shows questions answered (e.g. 3/8).",
+        "- AI suggestions appear during the interview\n  ***acceptance tests***\n  - Shows suggestions such as \"Good structure in your answer\", \"Try to quantify your impact\", \"Add more about teamwork\"."
+    ]
+}

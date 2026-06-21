@@ -1,0 +1,8 @@
+{
+    "source_hash": "f112a8b40fc4bfde203488f93db31862860709682e83814bc884af4097cb58cd",
+    "non_functional_source_hash": "3dd25458582e836431e27bca0cf0f931017a879f3f15d54ca726f87c6483b31e",
+    "functionalities": [
+        "- Platform only displays jobs from companies with active UK visa sponsorship licences\n  ***acceptance tests***\n  - Jobs from non-sponsored companies are filtered out at load time.\n  - A green \"Sponsorship: Active\" pill is shown on sponsored jobs.",
+        "- User profile is displayed in the sidebar\n  ***acceptance tests***\n  - Shows avatar with initials \"AA\", name and email.\n  - Pro upgrade promo card is visible at the bottom of the sidebar."
+    ]
+}

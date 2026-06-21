@@ -1,0 +1,7 @@
+{
+    "source_hash": "9c6ac75abfea21634079705216888b8a1af0415c662df36a3aea2a6f85ff7051",
+    "non_functional_source_hash": "c45a13e8db33d3b97e4f6766a658b73e173fda13dfd978f3e7772d4efaa3fd96",
+    "functionalities": [
+        "- Top summary row shows application counts\n  ***acceptance tests***\n  - Shows 6 cards: All Applications (24), Applied (10), In Progress (5), Interview (3), Offer (1), Rejected (5)."
+    ]
+}
